@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% autoescape false %}
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Post</title>
+          <style>
+                    .color
+                    {
+                              background-color: black;
+                              width:320px;
+                              height:320px;
+                    }
+                    img 
+                    {
+                              width: 300px;
+                              height:300px;
+                              padding:10px;
+                    }
+          </style>
+</head>
+<body>
+          <center>
+                    <h1> Hey welcome {{user}}..</h1>
+                    {% if user== "Admin"%}
+                              <a href="/dashboard">Admin Dashboard</a>
+                    {% else%}
+                              <a href=""></a>
+                    {% endif %}
+                    <br>
+                    <div class="color">
+                    <img src="/static/img/img.jpg" alt="Image here"/>
+                    </div>
+                    <br>
+                    {% for cmt in comment %}
+                              <p>User: {{ cmt }}</p>
+                    {% endfor %}
+                    <br>
+                    <h3> Comments:</h3>
+                    <form method="POST" action="/cmt">
+                              <textarea name="cmets" row="10" cols="50" placeholder="Enter your comments here.." required></textarea>
+                              <br>
+                              <input type="submit" value="Post" name="btn">
+                    </form>
+          </center>
+</body>
+</html>
+{% endautoescape %}
